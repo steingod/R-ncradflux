@@ -1,0 +1,14 @@
+Package: ncradflux
+Version: 0.2
+Date: 2009-03-07
+Title: Post-processing radiative fluxes in NetCDF format
+Author: Oystein Godoy <o.godoy@met.no>
+Maintainer: Oystein Godoy <o.godoy@met.no>
+Depends: 
+Imports: RNetCDF
+Suggests: 
+Description: Reading and post-processing radaitive flux measurements in
+	NetCDF format. Longwave balance can be converted to downward and
+	data can be plotted.
+License: GPL version 2 or newer
+URL: http://www.r-project.org, http://www.met.no
