@@ -1,6 +1,6 @@
-\name{downward_longwave}
+\name{longwave_downward}
 
-\alias{downward_longwave}
+\alias{longwave_downward}
 
 \title{
     Estimate the downward longwave radiation
@@ -15,7 +15,7 @@
 }
 
 \usage{
-    downward_longwave(x)
+    longwave_downward(x)
 }
 
 \arguments{
@@ -36,7 +36,7 @@
 }
 
 \examples{
-    t <- downward_longwave(tmp)
+    t <- longwave_downward(tmp)
 }
 
 \keyword{

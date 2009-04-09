@@ -24,7 +24,7 @@
 }
 
 \seealso{
-    \link{longwave_downrad},\link{plotradflux}
+    \link{longwave_downward},\link{plotradflux}
 }
 
 \author{
