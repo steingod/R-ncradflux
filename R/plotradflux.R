@@ -1,6 +1,6 @@
 plotradflux <- function(x) {
 
-    myindex <- format(x$time,"%m","GMT")
+    myindex <- format(x$time,"%Y%m","GMT")
     monthlytime <- ISOdatetime(1970,1,1,0,0,0,"GMT")+tapply(x$time,myindex,mean,na.rm=T)
     ii <- order(monthlytime)
     monthlyssi <- tapply(x$shortwave,myindex,mean,na.rm=T)
