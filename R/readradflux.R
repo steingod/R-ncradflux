@@ -1,9 +1,13 @@
-readradflux <- function(file) {
+readradflux <- function(file,readUVMED=FALSE,readSSITEMP=TRUE,readDLITEMP=TRUE) {
 
     library(RNetCDF)
     nc <- open.nc(file)
 
     print.nc(nc)
+
+    myuvmed <- NULL
+    mytempssi <- NULL
+    mytempdli <- NULL
 
     mytitle <- att.get.nc(nc,"NC_GLOBAL","title")
     myplatform <- att.get.nc(nc,"NC_GLOBAL","Platform_name")
@@ -15,9 +19,16 @@ readradflux <- function(file) {
     mytime1 <- var.get.nc(nc,"time")
     mytime <- ISOdatetime(1970,1,1,0,0,0,"GMT")+mytime1
     myssi <- var.get.nc(nc,"ssi")
-    mytempssi <- var.get.nc(nc,"ssisenstemp")
+    if (readSSITEMP) {
+	mytempssi <- var.get.nc(nc,"ssisenstemp")
+    }
     mydli <- var.get.nc(nc,"dli")
-    mytempdli <- var.get.nc(nc,"dlisenstemp")
+    if (readDLITEMP) {
+	mytempdli <- var.get.nc(nc,"dlisenstemp")
+    }
+    if (readUVMED) {
+	myuvmed <- var.get.nc(nc,"uvmed")
+    }
     mybattery <- var.get.nc(nc,"battery")
     close.nc(nc)
 
@@ -26,5 +37,5 @@ readradflux <- function(file) {
 #    screen(2)
 #    plot(mytime,mydli,type="l")
 
-    return(list(info=list(title=mytitle,platform=myplatform,start_date=mystartdate,stop_date=mystopdate,longitude=mylongitude,latitude=mylatitude),time=mytime,shortwave=myssi,longwave=mydli,ssi_temperature=mytempssi,dli_temperature=mytempdli,battery=mybattery))
+    return(list(info=list(title=mytitle,platform=myplatform,start_date=mystartdate,stop_date=mystopdate,longitude=mylongitude,latitude=mylatitude),time=mytime,shortwave=myssi,longwave=mydli,ssi_temperature=mytempssi,dli_temperature=mytempdli,uvmed=myuvmed,battery=mybattery))
 }

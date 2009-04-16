@@ -12,11 +12,17 @@
 }
 
 \usage{
-    readradflux(file)
+    readradflux(file,readUVMED=FALSE,readSSITEMP=TRUE,readDLITEMP=TRUE)
 }
 
 \arguments{
     \item{file}{Filename and path to read}
+    \item{readUVMED}{Boolean indicating whether to read UV med/hour if
+    this is available}
+    \item{readSSITEMP}{Boolean indicating whether to read the sensor
+    temperature of the CMP21 if this is available}
+    \item{readDLITEMP}{Boolean indicating whether to read the sensor
+    temperature of the CGR4 if this is available}
 }
 
 \value{
