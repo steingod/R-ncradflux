@@ -28,7 +28,7 @@
 }
 
 \seealso{
-    \link{readradflux}, \link{plotradflux}
+    \link{readradflux}, \link{plotradflux}, \link{averadflux}
 }
 
 \author{

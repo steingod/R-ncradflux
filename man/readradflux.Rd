@@ -30,7 +30,7 @@
 }
 
 \seealso{
-    \link{longwave_downward},\link{plotradflux}
+    \link{longwave_downward},\link{plotradflux}, \link{averadflux}
 }
 
 \author{

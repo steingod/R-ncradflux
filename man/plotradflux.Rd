@@ -17,7 +17,7 @@
 }
 
 \arguments{
-    \item{x}{radflux object as returned by \{readncflux}}
+    \item{x}{radflux object as returned by \link{readradflux}}
 }
 
 \value{
