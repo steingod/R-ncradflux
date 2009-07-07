@@ -28,7 +28,8 @@
 }
 
 \seealso{
-    \link{readradflux}, \link{plotradflux}, \link{longwave_downward}
+    \link{readradflux}, \link{plotradflux}, \link{longwave_downward},
+    \link{evalradflux}
 }
 
 \author{

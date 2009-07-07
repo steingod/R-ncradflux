@@ -13,7 +13,7 @@
 }
 
 \usage{
-    plotradflux(x)
+    plotradflux(x, ...)
 }
 
 \arguments{
@@ -24,7 +24,7 @@
 }
 
 \seealso{
-    \link{readradflux},\link{longwave_downward}
+    \link{readradflux},\link{longwave_downward}, \link{evalradflux}
 }
 
 \author{

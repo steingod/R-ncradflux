@@ -1,6 +1,6 @@
 Package: ncradflux
-Version: 0.5
-Date: 2009-06-30
+Version: 0.6
+Date: 2009-07-03
 Title: Post-processing radiative fluxes in NetCDF format
 Author: Oystein Godoy <o.godoy@met.no>
 Maintainer: Oystein Godoy <o.godoy@met.no>

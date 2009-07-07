@@ -1,3 +1,6 @@
+#
+# $Id: longwave_downward.R,v 1.2 2009-07-07 07:21:32 steingod Exp $
+#
 longwave_downward <- function(x) {
 
     netdown <- x$longwave+((5.67e-8)*((x$dli_temperature+273.15)^4))

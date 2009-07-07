@@ -1,3 +1,6 @@
+#
+# $Id: averadflux.R,v 1.2 2009-07-07 07:21:32 steingod Exp $
+#
 averadflux <- function(x) {
 
     myindex <- format(x$time,"%Y%m","GMT")
