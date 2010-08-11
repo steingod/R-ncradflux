@@ -9,8 +9,8 @@ readbioforsk <- function(file) {
     x <- read.table(file, skip=1)
     colnames(x) <- varnames
 
-    datetime <- strptime(x[,1],"%Y%m%d%H%M")
-    #x[,1] <- datetime
+    datetime <- lapply(as.character(x[,1]), strptime, "%Y%m%d%H%M%S", tz="GMT")
+    #x[,1] <- as.vector(datetime)
     
     return(list(stname=stname,stnr=stnr,m=datetime,varnames=varnames,data=x))
 }
