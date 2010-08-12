@@ -1,5 +1,5 @@
 # 
-# $Id: radfluxest.R,v 1.2 2010-08-12 08:56:34 steingod Exp $
+# $Id: radfluxest.R,v 1.3 2010-08-12 09:43:58 steingod Exp $
 #
 # Various functions mainly used internally to estimate or analyse
 # radiative fluxes.
@@ -25,7 +25,7 @@ fm_rad2deg <- function(radians) {
 fm_time2tst <- function(x,tz,lon) {
 
     #tz <- strftime(x,"%Z")
-    doy <- strftime(x,"%j")
+    doy <- as.numeric(strftime(x,"%j"))
 
     if (tz == "GMT") {
 	cmer <- 0
@@ -56,9 +56,9 @@ fm_solzen <- function(tst, lat, lon) {
     glat <- fm_deg2rad(lat);
     glon <- fm_deg2rad(lon);
 
-    doy <- strftime(tst,"%j")
-    hour <- strftime(tst,"%H")
-    min <- strftime(tst,"%M")
+    doy <- as.numeric(strftime(tst,"%j"))
+    hour <- as.numeric(strftime(tst,"%H"))
+    min <- as.numeric(strftime(tst,"%M"))
 
     # Estimate declination
     decl <- fm_decl(doy)
@@ -71,7 +71,7 @@ fm_solzen <- function(tst, lat, lon) {
     
     # Estimate the solar zenith angle.
     coszensun <- (cos(glat)*cos(hangle)*cos(decl))+(sin(glat)*sin(decl))
-    soz <- fmrad2deg((acos(coszensun)))
+    soz <- fm_rad2deg((acos(coszensun)))
 
     return(soz);
 }
