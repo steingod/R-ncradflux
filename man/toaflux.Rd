@@ -1,6 +1,6 @@
 \name{toaflux}
 
-\alias{toaiirad}
+\alias{toaflux}
 
 \title{
     Estimate TOA broadband irradiance
