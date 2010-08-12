@@ -1,5 +1,5 @@
 #
-# $Id: readbioforsk.R,v 1.3 2010-08-11 14:37:59 steingod Exp $
+# $Id: readbioforsk.R,v 1.4 2010-08-12 09:23:10 steingod Exp $
 #
 # Bioforsk data are valid for the hour after the time registered.
 #
@@ -22,5 +22,5 @@ readbioforsk <- function(file) {
 
     options(scipen=myscipen)
     
-    return(list(stname=stname,stnr=stnr,tz="GMT",data=x))
+    return(list(stname=stname,stnr=stnr,owner="Bioforsk",tz="GMT",data=x))
 }
