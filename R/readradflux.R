@@ -1,3 +1,6 @@
+#
+# $Id: readradflux.R,v 1.3 2010-08-12 08:56:34 steingod Exp $
+#
 readradflux <- function(file,readUVMED=FALSE,readSSITEMP=TRUE,readDLITEMP=TRUE) {
 
     library(RNetCDF)
