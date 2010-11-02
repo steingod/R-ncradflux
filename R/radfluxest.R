@@ -1,12 +1,12 @@
 # 
-# $Id: radfluxest.R,v 1.3 2010-08-12 09:43:58 steingod Exp $
+# $Id: radfluxest.R,v 1.4 2010-11-02 08:53:37 steingod Exp $
 #
 # Various functions mainly used internally to estimate or analyse
 # radiative fluxes.
 #
 
 # Convert from degrees to radians
-fm_deg2rad <- function(degrees) {
+deg2rad <- function(degrees) {
 
     radians <- degrees*(pi/180)
 
@@ -14,7 +14,7 @@ fm_deg2rad <- function(degrees) {
 }
 
 # Convert from radians to degrees
-fm_rad2deg <- function(radians) {
+rad2deg <- function(radians) {
 
     degrees <- radians*(180/pi)
 
@@ -22,7 +22,7 @@ fm_rad2deg <- function(radians) {
 }
 
 # Convert from time zone to true solar time
-fm_time2tst <- function(x,tz,lon) {
+time2tst <- function(x,tz,lon) {
 
     #tz <- strftime(x,"%Z")
     doy <- as.numeric(strftime(x,"%j"))
@@ -33,7 +33,7 @@ fm_time2tst <- function(x,tz,lon) {
 	cmer <- 15
     }
     loncorr <- floor(((lon-cmer)*240)+0.5)
-    deltat <- fm_eqt(doy)
+    deltat <- eqt(doy)
 
     tst <- x+loncorr+deltat
 
@@ -41,7 +41,7 @@ fm_time2tst <- function(x,tz,lon) {
 }
 
 # Estimate hour angle
-fm_ha <- function(tst) {
+ha <- function(tst) {
 
     ha <- (tst-12.)*0.2618
 
@@ -51,27 +51,27 @@ fm_ha <- function(tst) {
 #
 # Estimate solar zenith angle for given position
 #
-fm_solzen <- function(tst, lat, lon) {
+solzen <- function(tst, lat, lon) {
 
-    glat <- fm_deg2rad(lat);
-    glon <- fm_deg2rad(lon);
+    glat <- deg2rad(lat);
+    glon <- deg2rad(lon);
 
     doy <- as.numeric(strftime(tst,"%j"))
     hour <- as.numeric(strftime(tst,"%H"))
     min <- as.numeric(strftime(tst,"%M"))
 
     # Estimate declination
-    decl <- fm_decl(doy)
+    decl <- decl(doy)
 
     # Estimate the hour angle.
     et <- 0.170*sin(4*pi*(doy-80.)/373.)-
 	0.129*sin(2*pi*(doy-8.)/355.);
     tsthour <- (hour+((min)/60.));
-    hangle <- fm_ha(tsthour);
+    hangle <- ha(tsthour);
     
     # Estimate the solar zenith angle.
     coszensun <- (cos(glat)*cos(hangle)*cos(decl))+(sin(glat)*sin(decl))
-    soz <- fm_rad2deg((acos(coszensun)))
+    soz <- rad2deg((acos(coszensun)))
 
     return(soz);
 }
@@ -79,9 +79,9 @@ fm_solzen <- function(tst, lat, lon) {
 #
 # Convert albedo to bi-directional reflectance
 #
-fm_bidirrefl <- function(refl, date, solang) {
+bidirrefl <- function(refl, date, solang) {
 
-    dcorr <- fm_esd(as.numeric(format(date,"%j")))
+    dcorr <- esd(as.numeric(format(date,"%j")))
     bidirref <- (dcorr*refl)/(cos(solang*pi/180.));
 
     return(bidirref)
@@ -90,7 +90,7 @@ fm_bidirrefl <- function(refl, date, solang) {
 #
 # Distance correction earth/sun
 #
-fm_esd <- function(doy) {
+esd <- function(doy) {
 
     theta0 <- (2.*pi*doy)/365.
     d <- (1.000110+0.034221*cos(theta0)+
@@ -104,9 +104,9 @@ fm_esd <- function(doy) {
 #
 # Estimate declination
 #
-fm_decl <- function(doy) {
+decl <- function(doy) {
 
-    theta0 <- (2.*pi*doy)/365.
+    theta0 <- (2.*pi*(doy-1))/365.
 
     decl <- 0.006918 -(0.399912*cos(theta0))+
 	(0.070257*sin(theta0))-
@@ -115,14 +115,13 @@ fm_decl <- function(doy) {
 	(0.002697*cos(3.*theta0))+
 	(0.001480*sin(3.*theta0))
 
-
     return(decl)
 }
 
 # 
 # Equation of time
 #
-fm_eqt <- function(doy) {
+eqt <- function(doy) {
 
     theta0 = (2.*pi*doy)/365.;
 
@@ -148,10 +147,10 @@ fm_eqt <- function(doy) {
 #
 # Units mW/(m² sr cm¯²)
 #
-fm_findsollum <- function(sunz, satname, date) {
+findsollum <- function(sunz, satname, date) {
 
-    satCs <- fm_ch3b_identsat(satname)
-    dcorr <- fm_esd(as.numeric(format(date,"%j")))
+    satCs <- ch3b_identsat(satname)
+    dcorr <- esd(as.numeric(format(date,"%j")))
     sunzrad <- sunz*pi/180.
     sollum <- dcorr*satCs$solrad*cos(sunzrad) 
 
@@ -167,7 +166,7 @@ fm_findsollum <- function(sunz, satname, date) {
 #
 # Check libfmutil for details and updated coefficients.
 #
-fm_ch3b_identsat <- function(satname) {
+ch3b_identsat <- function(satname) {
 
     if (satname == "NOAA-15"){  
 	satCs.Aval= 1.621256;

@@ -9,7 +9,7 @@
 \description{
     Estimates the broadband irradiance at Top Of the Atmosphere (TOA)
     using a configurable Solar Constant. If no Solar Constant is provided,
-    the standard value of 1370\note{To be checked!!}.
+    the standard value of 1370 W/m² is used.
 }
 
 \usage{
@@ -20,13 +20,15 @@
     \item{tst}{True Solar Time or local time}
     \item{lat}{geographical latitude in degrees, positive northwards}
     \item{lon}{geographical longitude in degrees, positive eastwards}
-    \item{s0}{Solar Constant, 1370W/m² unless changed}
+    \item{s0}{Solar Constant, 1370 W/m² unless changed}
 }
 
 \value{
     \link{numeric}
 }
-
+\note{
+    The proper value to use for \code{s0} is still to be checked!!
+    }
 \seealso{
 }
 
