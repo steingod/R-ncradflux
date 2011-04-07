@@ -1,5 +1,5 @@
 #
-# $Id: plotradflux.R,v 1.3 2009-07-07 07:21:32 steingod Exp $
+# $Id: plotradflux.R,v 1.4 2011-04-07 09:38:45 steingod Exp $
 #
 plotradflux <- function(x, ...) {
 
@@ -13,9 +13,9 @@ plotradflux <- function(x, ...) {
     split.screen(c(2,1))
     screen(1)
     par(cex=0.7,cex.sub=0.7,mai=c(0.8,0.5,0.2,0.2))
-    plot(x$time,x$shortwave,type="l",ylab="W/M²",...)
+    plot(x$time,x$shortwave,type="l",ylab="W/MÃ‚Â²",...)
     lines(monthlytime[ii],monthlyssi[ii],type="b",col="red",lwd=3)
-    if (x$info$platform == "Bjørnøya") {
+    if (x$info$platform == "BjÃ¸rnÃ¸ya") {
 	text(ISOdatetime(2009,2,6,0,0,0,"GMT"),350,"Hungry polar bear",cex=0.8,pos=2)
 	arrows(ISOdatetime(2009,2,6,0,0,0,"GMT"),350,ISOdatetime(2009,2,6,0,0,0,"GMT"),250,lwd=4,length=0.1)
     }
@@ -23,11 +23,13 @@ plotradflux <- function(x, ...) {
     sub=paste(x$info$start_date,x$info$stop_date,sep=" - "))
     screen(2)
     par(cex=0.7,cex.sub=0.7,mai=c(0.8,0.5,0.2,0.2))
-    plot(x$time,x$longwave,type="l",ylab="W/M²",...)
+    plot(x$time,x$longwave,type="l",ylab="W/MÃ‚Â²",...)
     lines(monthlytime[ii],monthlydli[ii],type="b",col="red",lwd=3)
-    if (x$info$platform == "Bjørnøya") {
+    if (x$info$platform == "BjÃ¸rnÃ¸ya") {
 	text(ISOdatetime(2009,2,6,0,0,0,"GMT"),350,"Hungry polar bear",cex=0.8,pos=2)
 	arrows(ISOdatetime(2009,2,6,0,0,0,"GMT"),350,ISOdatetime(2009,2,6,0,0,0,"GMT"),325,lwd=4,length=0.1)
+	text(ISOdatetime(2011,1,18,0,0,0,"GMT"),350,"Hungry polar bear",cex=0.8,pos=2)
+	arrows(ISOdatetime(2011,1,18,0,0,0,"GMT"),350,ISOdatetime(2011,1,18,0,0,0,"GMT"),325,lwd=4,length=0.1)
     }
     title(paste("Downward Longwave Irradiance at",x$info$platform),
     sub=paste(x$info$start_date,x$info$stop_date,sep=" - "))

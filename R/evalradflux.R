@@ -1,5 +1,5 @@
 #
-# $Id: evalradflux.R,v 1.1 2010-08-11 14:37:59 steingod Exp $
+# $Id: evalradflux.R,v 1.2 2011-04-07 09:38:45 steingod Exp $
 #
 evalradflux <- function(x,parameter="SSI",integration="DAILY",subset) {
 
@@ -27,7 +27,7 @@ evalradflux <- function(x,parameter="SSI",integration="DAILY",subset) {
     ii <- sort(order(mytime))
     mydata <- tapply(tmp$par,myindex,mean,na.rm=T)
 
-    plot(ii,mydata[ii],type="b",ylab="W/m²",xlab="UTC",lwd=2)
+    plot(ii,mydata[ii],type="b",ylab="W/m^2",xlab="UTC",lwd=2)
     if (integration=="DAILY") {
 	abline(v=12)
     } else if (integration=="DAILYCONT") {
