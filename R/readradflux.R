@@ -1,5 +1,5 @@
 #
-# $Id: readradflux.R,v 1.3 2010-08-12 08:56:34 steingod Exp $
+# $Id: readradflux.R,v 1.4 2011-12-06 18:43:20 steingod Exp $
 #
 readradflux <- function(file,readUVMED=FALSE,readSSITEMP=TRUE,readDLITEMP=TRUE) {
 
@@ -18,6 +18,8 @@ readradflux <- function(file,readUVMED=FALSE,readSSITEMP=TRUE,readDLITEMP=TRUE) 
     mystopdate <- att.get.nc(nc,"NC_GLOBAL","stop_date")
     mylatitude <- var.get.nc(nc,"latitude")
     mylongitude <- var.get.nc(nc,"longitude")
+
+    Encoding(myplatform) <- "latin1"
 
     mytime1 <- var.get.nc(nc,"time")
     mytime <- ISOdatetime(1970,1,1,0,0,0,"GMT")+mytime1
