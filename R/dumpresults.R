@@ -3,7 +3,8 @@
 # dumpresults
 #
 # PURPOSE:
-# Dumps results on monthly files using write.table.
+# Dumps results on monthly files using write.table. This function only
+# works on the output of averadflux.
 #
 # REQUIREMENTS:
 # NA
@@ -28,10 +29,10 @@
 # NA
 #
 # CVS_ID:
-# $Id: dumpresults.R,v 1.1 2011-04-07 09:38:45 steingod Exp $
+# $Id: dumpresults.R,v 1.2 2012-04-13 22:35:48 steingod Exp $
 #
 
-dumpresults <- function(x) {
+dumpresults <- function(path="./",x) {
 
     mytime <- x$time
     myfactor <- factor(strftime(mytime,"%Y%m",tz="GMT"))
@@ -53,7 +54,7 @@ dumpresults <- function(x) {
 
     for (mymonth in mylevels) {
         mydata <- x[myfactor==mymonth,c("time","mssi","nssi","mdli","ndli")]
-        outfile <- paste("radflux_",location,"_",mymonth,".txt",sep="")
+        outfile <- paste(path,"/","radflux_",location,"_",mymonth,".txt",sep="")
         write.table(mydata,outfile,na="-999.",row.names=F)
     }
 }

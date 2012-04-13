@@ -1,20 +1,21 @@
 #
-# $Id: averadflux.R,v 1.3 2010-11-02 08:53:37 steingod Exp $
+# $Id: averadflux.R,v 1.4 2012-04-13 22:35:47 steingod Exp $
 #
 averadflux <- function(x, period="month") {
 
     if (period=="month") {
         myindex <- format(x$time,"%Y%m","GMT")
         meantime <- ISOdatetime(1970,1,1,0,0,0,"GMT")+tapply(x$time,myindex,mean,na.rm=T)
-        ii <- order(meantime)
     } else if (period=="day") {
         myindex <- format(x$time,"%Y%j","GMT")
         meantime <- ISOdatetime(1970,1,1,0,0,0,"GMT")+tapply(x$time,myindex,mean,na.rm=T)
-        ii <- order(meantime)
+    } else if (period=="diurnal") {
+        myindex <- as.numeric(format(x$time,"%H","GMT"))+as.numeric(format(x$time,"%M","GMT"))/60.
+        meantimetmp <- ISOdatetime(1970,1,1,0,0,0,"GMT")+tapply(x$time,myindex,mean,na.rm=T)
+        meantime <- as.numeric(format(meantimetmp,"%H","GMT"))+as.numeric(format(meantimetmp,"%M","GMT"))/60.
     } else if (period=="hour") {
         myindex <- format(x$time,"%Y%j%H","GMT")
         meantime <- ISOdatetime(1970,1,1,0,0,0,"GMT")+tapply(x$time,myindex,mean,na.rm=T)
-        ii <- order(meantime)
     }
     meanssi <- tapply(x$shortwave,myindex,mean,na.rm=T)
     nvalssi <- tapply(x$shortwave,myindex,function(x) sum(!is.na(x)))

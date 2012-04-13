@@ -11,7 +11,6 @@
     including representative times. Currently a pure mean is offered, in
     the future additional methods should be offered. Beware that the
     interface of this function may change in the future.
-
     In the current setup only estimation of the mean value for a period
     (month, day or hour) is supported using the function \link{mean}. The
     resulting estimate is representative for the following time. E.g.
@@ -25,7 +24,7 @@
 \arguments{
     \item{x}{An radflux object as returned by \link{readradflux}}
     \item{period}{Period to sum over. Valid keywords are \code{month}
-    (default), \code{day} (day of year) and \code{hour}.
+    (default), \code{day} (day of year), \code{diurnal} (daily variation) and \code{hour}}
 }
 
 \value{
@@ -34,7 +33,6 @@
     DLI, SSI and the accompaning time as well as the number of elements
     that are used to estimate each average value. Furthermore, the
     information element of the input object is attached in rewritten form.
-
 }
 
 \seealso{
