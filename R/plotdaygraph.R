@@ -27,7 +27,7 @@
 # NA
 #
 # ID:
-# $Id: plotdaygraph.R,v 1.1 2012-08-18 19:12:58 steingod Exp $
+# $Id: plotdaygraph.R,v 1.2 2012-08-22 10:50:33 steingod Exp $
 #
 plotdaygraph <- function(x,timezone="UTC",interval=10,decimal=2,method=max,...) {
 
@@ -45,6 +45,16 @@ plotdaygraph <- function(x,timezone="UTC",interval=10,decimal=2,method=max,...) 
 
     plot(tmpy,type="l",...)
     abline(v=12)
+
+    return(tmpy)
+}
+
+plotyeargraph <- function(x,timezone="GMT",method=max,...) {
+
+    tmpx <- as.numeric(strftime(x$time,"%j",tz=timezone))
+    tmpy <- aggregate(x$shortwave,list(tmpx),method,na.rm=T)
+
+    plot(tmpy,type="l",...)
 
     return(tmpy)
 }
