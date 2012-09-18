@@ -1,6 +1,6 @@
 #
 # Content:
-# Time manipulation functions drawn from libfmutil.
+# Time manipulation functions, most are taken from libfmutil.
 #
 # PURPOSE:
 # NA
@@ -27,7 +27,7 @@
 # NA
 #
 # ID:
-# $Id: timeconversion.R,v 1.1 2012-08-18 19:12:58 steingod Exp $
+# $Id: timeconversion.R,v 1.2 2012-09-18 15:03:56 steingod Exp $
 #
 loncorr <- function(centralmeridian, longitude) {
 
