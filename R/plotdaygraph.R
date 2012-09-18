@@ -1,6 +1,6 @@
 #
 # Content:
-# Plot functions for examination of inconsistencies in solar fluxes.
+# Plot a "normal" day.
 #
 # PURPOSE:
 # NA
@@ -27,7 +27,7 @@
 # NA
 #
 # ID:
-# $Id: plotdaygraph.R,v 1.3 2012-09-18 15:03:56 steingod Exp $
+# $Id: plotdaygraph.R,v 1.4 2012-09-18 15:40:54 steingod Exp $
 #
 plotdaygraph <- function(x,timezone="UTC",interval=10,decimal=2,method=max,...) {
 
