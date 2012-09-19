@@ -27,10 +27,12 @@
 # NA
 #
 # CVS_ID:
-# $Id: createdecimalhour.R,v 1.1 2012-09-18 15:03:56 steingod Exp $
+# $Id: createdecimalhour.R,v 1.2 2012-09-19 09:19:58 steingod Exp $
 #  
 
 createdecimalhour <- function(x, minuteinterval=-99, ...) {
+
+    if (class(x) != "POSIXct") return("x is of wrong class")
 
     hour <- as.numeric(strftime(x,"%H", ...))
     minute <- as.numeric(strftime(x,"%M", ...))

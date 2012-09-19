@@ -1,28 +1,25 @@
-\name{ plotdaygraph }
+\name{ plotyeargraph }
 
-\alias{ plotdaygraph }
+\alias{ plotyeargraph }
 
 \title{
-    Plot solar insolation at a station during the day
+    Plot solar insolation at a station during a year
 }
 
 \description{
     This function plots the insolation at a station as provided through
-    observations. Provided a time series, a "normal" day can be plotted
+    observations. Provided a time series, a "normal" year can be plotted
     using mean, max or similar functions on all the data provided.
 }
 
 \usage{
-    plotdaygraph(x,timezone="UTC",interval=10,decimal=2,method=max,...)
+    plotyeargraph(x,timezone="UTC",method=max,...)
 }
 
 \arguments{
     \item{x}{A data object as returned by \link{readradflux}}
     \item{timezone}{Specifcation of the timezone, valid values are UTC,
     CET and TST (for true solar time)}
-    \item{interval}{Specification of aggregation interval in minutes if original
-    values are not used (typically this is 10 or 15)}
-    \item{decimal}{obsolete}
     \item{method}{Function to use}
     \item{...}{Additional plotting parameters}
 }
@@ -31,8 +28,7 @@
 }
 
 \seealso{
-    \link{readradflux}, \link{plotyeargraph}, \link{extracttimeperiod},
-    \link{createdecimalhour}
+    \link{readradflux}, \link{plotyeargraph}, \link{extracttimeperiod}
 }
 
 \author{
