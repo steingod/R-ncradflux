@@ -55,6 +55,6 @@ dumpresults <- function(path="./",x) {
     for (mymonth in mylevels) {
         mydata <- x[myfactor==mymonth,c("time","mssi","nssi","mdli","ndli")]
         outfile <- paste(path,"/","radflux_",location,"_",mymonth,".txt",sep="")
-        write.table(mydata,outfile,na="-999.",row.names=F)
+        write.table(mydata,outfile,na="-999.",row.names=F,quote=F,col.names=c("\"time\"","\"mssi\"","\"nssi\"","\"mdli\"","\"ndli\""))
     }
 }

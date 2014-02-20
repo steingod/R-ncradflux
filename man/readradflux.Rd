@@ -12,7 +12,7 @@
 }
 
 \usage{
-    readradflux(file,readUVMED=FALSE,readSSITEMP=TRUE,readDLITEMP=TRUE)
+    readradflux(file,readUVMED=FALSE,readSSITEMP=TRUE,readDLITEMP=TRUE,readBATTERY=FALSE)
 }
 
 \arguments{
@@ -23,6 +23,8 @@
     temperature of the CMP21 if this is available}
     \item{readDLITEMP}{Boolean indicating whether to read the sensor
     temperature of the CGR4 if this is available}
+    \item{readBATTER}{Boolean indicating whether to read the battery
+    state}
 }
 
 \value{
