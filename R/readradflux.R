@@ -36,7 +36,7 @@ readradflux <-
         if (readUVMED) {
             myuvmed <- var.get.nc(nc,"uvmed")
         }
-        if (reaBATTERY) {
+        if (readBATTERY) {
             mybattery <- var.get.nc(nc,"battery")
             close.nc(nc)
         }
