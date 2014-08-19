@@ -13,7 +13,7 @@ plotradflux <- function(x, ...) {
     split.screen(c(2,1))
     screen(1)
     par(cex=0.7,cex.sub=0.7,mai=c(0.8,0.5,0.2,0.2))
-    plot(x$time,x$shortwave,type="l",ylab="W/m²",...)
+    plot(x$time,x$shortwave,type="l",ylab="W/m²",xlab="",...)
     lines(monthlytime[ii],monthlyssi[ii],type="b",col="red",lwd=3)
     if (x$info$platform == iconv("Bjørnøya",from="UTF8",to="ISO88591")) {
     #if (x$info$platform == "Bjørnøya") {
@@ -21,7 +21,8 @@ plotradflux <- function(x, ...) {
 	arrows(ISOdatetime(2009,2,6,0,0,0,"GMT"),350,ISOdatetime(2009,2,6,0,0,0,"GMT"),250,lwd=4,length=0.1)
     }
     title(paste("Surface Shortwave Irradiance at",x$info$platform),
-    sub=paste(x$info$start_date,x$info$stop_date,sep=" - "))
+    sub=paste(x$info$start_date,x$info$stop_date,sep=" - "),
+              xlab="Time",ylab="W/m²")
     screen(2)
     par(cex=0.7,cex.sub=0.7,mai=c(0.8,0.5,0.2,0.2))
     plot(x$time,x$longwave,type="l",ylab="W/m²",...)
@@ -34,7 +35,8 @@ plotradflux <- function(x, ...) {
 	arrows(ISOdatetime(2011,1,18,0,0,0,"GMT"),350,ISOdatetime(2011,1,18,0,0,0,"GMT"),325,lwd=4,length=0.1)
     }
     title(paste("Downward Longwave Irradiance at",x$info$platform),
-    sub=paste(x$info$start_date,x$info$stop_date,sep=" - "))
+    sub=paste(x$info$start_date,x$info$stop_date,sep=" - "),
+    xlab="Time",ylab="W/m²")
     par(def.par)
 
     return

@@ -50,6 +50,10 @@ dumpresults <- function(path="./",x) {
         location <- "hopen"
     } else if (x$info.platform[1]=="Ekofisk oil rig") {
         location <- "ekofisk"
+    } else if (x$info.platform[1]=="Sodankylä Observatory") {
+        location <- "sodankyla"
+    } else if (x$info.platform[1]=="Jokioinen Observatory") {
+        location <- "jokioinen"
     }
 
     for (mymonth in mylevels) {
