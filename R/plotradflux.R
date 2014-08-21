@@ -25,7 +25,7 @@ plotradflux <- function(x, ...) {
               xlab="Time",ylab="W/m²")
     screen(2)
     par(cex=0.7,cex.sub=0.7,mai=c(0.8,0.5,0.2,0.2))
-    plot(x$time,x$longwave,type="l",ylab="W/m²",...)
+    plot(x$time,x$longwave,type="l",ylab="W/m²",xlab="",...)
     lines(monthlytime[ii],monthlydli[ii],type="b",col="red",lwd=3)
     if (x$info$platform == iconv("Bjørnøya",from="UTF8",to="ISO88591")) {
     #if (x$info$platform == "Bjørnøya") {

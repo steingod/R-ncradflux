@@ -17,6 +17,9 @@ averadflux <- function(x, period="month") {
     } else if (period=="hour") {
         myindex <- format(x$time,"%Y%j%H","GMT")
         meantime <- ISOdatetime(1970,1,1,0,0,0,"GMT")+tapply(x$time,myindex,mean,na.rm=T)
+    } else if (period=="year") {
+        myindex <- format(x$time,"%Y","GMT")
+        meantime <- ISOdatetime(1970,1,1,0,0,0,"GMT")+tapply(x$time,myindex,mean,na.rm=T)
     }
     meanssi <- tapply(x$shortwave,myindex,mean,na.rm=T)
     nvalssi <- tapply(x$shortwave,myindex,function(x) sum(!is.na(x)))
