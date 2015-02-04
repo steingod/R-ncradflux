@@ -61,6 +61,12 @@ dumpresults <- function(path="./",x) {
     for (mymonth in mylevels) {
         mydata <- x[myfactor==mymonth,c("time","mssi","nssi","mdli","ndli")]
         outfile <- paste(path,"/","radflux_",location,"_",mymonth,".txt",sep="")
-        write.table(mydata,outfile,na="-999.00",row.names=F,quote=F,col.names=c("\"time\"","\"mssi\"","\"nssi\"","\"mdli\"","\"ndli\""))
+        myheader <- paste("# Hourly averages of surface irradiance",
+                          paste("# Location", location, sep=" "),
+                          "# time mssi nssi mdli ndli\n",
+                          sep="\n")
+        cat(myheader, file=outfile)
+        write.table(mydata,outfile,na="-999.00",row.names=F,col.names=F,
+                    quote=F, append=T)
     }
 }
