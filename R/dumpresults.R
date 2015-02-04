@@ -35,6 +35,8 @@
 dumpresults <- function(path="./",x) {
 
     mytime <- x$time
+    x$mssi <- formatC(x$mssi,format="f",digits=2)
+    x$mdli <- formatC(x$mdli,format="f",digits=2)
     myfactor <- factor(strftime(mytime,"%Y%m",tz="GMT"))
     mylevels <- levels(myfactor)
 
