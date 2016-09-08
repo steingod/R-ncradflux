@@ -9,6 +9,9 @@ averadflux <- function(x, period="month") {
     } else if (period=="day") {
         myindex <- format(x$time,"%Y%j","GMT")
         meantime <- ISOdatetime(1970,1,1,0,0,0,"GMT")+tapply(x$time,myindex,mean,na.rm=T)
+    } else if (period=="doy") {
+        myindex <- format(x$time,"%j","GMT")
+        meantime <- ISOdatetime(1970,1,1,0,0,0,"GMT")+tapply(x$time,myindex,mean,na.rm=T)
     } else if (period=="diurnal") {
         myindex <- format(x$time,"%H%M","GMT")
         meantimetmp <- ISOdatetime(1970,1,1,0,0,0,"GMT")+tapply(x$time,myindex,mean,na.rm=T)
